@@ -1,6 +1,13 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using ReactiveUI;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reactive;
+using System.Threading.Tasks;
 
 namespace SimpleCMake
 {
@@ -12,6 +19,8 @@ namespace SimpleCMake
 #if DEBUG
             this.AttachDevTools();
 #endif
+
+            DataContext = new MainHandler();
         }
 
         private void InitializeComponent()
