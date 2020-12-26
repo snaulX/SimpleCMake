@@ -35,7 +35,7 @@ namespace SimpleCMake
         public ReactiveCommand<Unit, Unit> NewFile { get; }
         public ReactiveCommand<Unit, Unit> OpenFile { get; }
         public ReactiveCommand<Unit, Unit> AddProj { get; }
-        public ReactiveCommand<Unit, Unit> AddSrcs { get; }
+        public ReactiveCommand<Unit, Task> AddSrcs { get; }
         public ReactiveCommand<Unit, Unit> AddHdrs { get; }
 
         private IClassicDesktopStyleApplicationLifetime desktop;
@@ -50,22 +50,29 @@ namespace SimpleCMake
         }
         private void _OpenFile()
         {
-            //pass
+            if (desktop != null)
+            {
+                //pass
+            }
+            else
+            {
+                Console.Error.WriteLine("Main window is not found");
+            }
         }
         private async void _AddProj()
         {
             if (desktop != null)
                 await new NewProjectDialog().ShowDialog(desktop.MainWindow);
         }
-        private void _AddSrcs()
+        private async Task _AddSrcs()
         {
             if (desktop != null)
             {
                 OpenFolderDialog folderDialog = new OpenFolderDialog();
                 folderDialog.Title = "Choose source folder";
-                Task<string> folderTask = folderDialog.ShowAsync(desktop.MainWindow);
-                folderTask.Wait();
-                string folder = folderTask.Result;
+                //Task<string> folderTask = folderDialog.ShowAsync(desktop.MainWindow);
+                //await Task.WhenAll(folderTask);
+                string folder = await folderDialog.ShowAsync(desktop.MainWindow);
                 string[] srcs = Directory.GetFiles(folder, "*.cpp");
             }
             else
@@ -73,9 +80,21 @@ namespace SimpleCMake
                 Console.Error.WriteLine("Main window not found. Folder for sources cannot be choose.");
             }
         }
-        private void _AddHdrs()
+        private async void _AddHdrs()
         {
-            //pass
+            if (desktop != null)
+            {
+                OpenFolderDialog folderDialog = new OpenFolderDialog();
+                folderDialog.Title = "Choose headers folder";
+                //Task<string> folderTask = folderDialog.ShowAsync(desktop.MainWindow);
+                //await Task.WhenAll(folderTask);
+                string folder = await folderDialog.ShowAsync(desktop.MainWindow);
+                string[] hdrs = Directory.GetFiles(folder, "*.h");
+            }
+            else
+            {
+                Console.Error.WriteLine("Main window not found. Folder for headers cannot be choose.");
+            }
         }
     }
 }
