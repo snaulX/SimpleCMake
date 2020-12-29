@@ -6,10 +6,17 @@ namespace CMakeUtils.Commands
 {
     public class Project : ICMakeFunction
     {
-        public Project(string projName)
+        public const string cmakeVersionText = "CMAKE_MINIMUM_VERSION_REQUIRED";
+
+        public Project()
+        {
+            ProjectName = "";
+            CMakeVersionMinimumRequired = new Version();
+        }
+
+        public Project(string projName) : this()
         {
             ProjectName = projName;
-            CMakeVersionMinimumRequired = new Version();
             CMakeProject.Targets.Add(new CMakeTarget(projName));
         }
 
@@ -34,6 +41,11 @@ namespace CMakeUtils.Commands
         {
             if (args.Count == 1)
                 ProjectName = args[0];
+            if (args.Count == 3)
+            {
+                if (args[1] == cmakeVersionText)
+                    CMakeVersionMinimumRequired = Version.Parse(args[2]);
+            }
         }
 
         public string ToCMakeLine()
@@ -44,7 +56,7 @@ namespace CMakeUtils.Commands
             line.Append(ProjectName);
             if (CMakeVersionMinimumRequired.Major != 0)
             {
-                line.Append(" CMAKE_MINIMUM_VERSION_REQUIRED ");
+                line.Append(" " + cmakeVersionText + " ");
                 line.Append(CMakeVersionMinimumRequired);
             }
             line.Append(')');

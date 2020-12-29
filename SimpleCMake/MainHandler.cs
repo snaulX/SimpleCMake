@@ -16,6 +16,8 @@ namespace SimpleCMake
     {
         public MainHandler()
         {
+            CMakeProject.Init();
+            script = new CMakeScript();
             Exit = ReactiveCommand.Create(_Exit);
             NewFile = ReactiveCommand.Create(_NewFile);
             OpenFile = ReactiveCommand.Create(_OpenFile);
@@ -29,7 +31,7 @@ namespace SimpleCMake
                 desktop = null;
         }
 
-        public static CMakeScript script = new CMakeScript();
+        public static CMakeScript script;
 
         public ReactiveCommand<Unit, Unit> Exit { get; }
         public ReactiveCommand<Unit, Unit> NewFile { get; }
