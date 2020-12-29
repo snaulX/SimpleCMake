@@ -26,9 +26,13 @@ namespace CMakeUtils
             type = TargetType.Executable;
         }
 
-        public CMakeTarget(string name, TargetType type) : this()
+        public CMakeTarget(string name) : this()
         {
             this.name = name;
+        }
+
+        public CMakeTarget(string name, TargetType type) : this(name)
+        {
             this.type = type;
         }
     }
