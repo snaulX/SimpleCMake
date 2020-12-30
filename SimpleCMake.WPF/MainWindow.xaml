@@ -1,0 +1,32 @@
+﻿<Window x:Class="SimpleCMake.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleCMake.WPF"
+        mc:Ignorable="d"
+        Title="Simple CMake" Height="450" Width="800">
+    <Grid>
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem x:Name="newFile"  Header="New"/>
+                <MenuItem x:Name="openFile" Header="Open"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </MenuItem>
+            <MenuItem Header="Project">
+                <MenuItem Header="New Script" />
+            </MenuItem>
+            <MenuItem Header="Script">
+                <MenuItem Header="New Target" />
+                <MenuItem Header="New Command" />
+            </MenuItem>
+            <MenuItem Header="Target">
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

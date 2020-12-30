@@ -17,10 +17,17 @@
       <MenuItem Header="Edit">
         <MenuItem Header="Copy"/>
         <MenuItem Header="Paste"/>
+        <MenuItem Header="Delete" HotKey="Delete"/>
       </MenuItem>
       <MenuItem Header="Project">
-        <MenuItem Header="Add Project" Command="{Binding AddProj}" />
-        <Separator/>
+        <MenuItem Header="New Script" />
+        <MenuItem Header="Add Existing Script" />
+        <MenuItem Header="Open Script" />
+      </MenuItem>
+      <MenuItem Header="Script">
+        <MenuItem Header="Add Target" Command="{Binding AddTarget}" />
+      </MenuItem>
+      <MenuItem Header="Target">
         <MenuItem Header="Add Source Folder" Command="{Binding AddSrcs}" />
         <MenuItem Header="Add Headers Folder" Command="{Binding AddHdrs}" />
       </MenuItem>

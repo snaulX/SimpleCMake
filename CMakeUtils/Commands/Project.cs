@@ -17,7 +17,7 @@ namespace CMakeUtils.Commands
         public Project(string projName) : this()
         {
             ProjectName = projName;
-            CMakeProject.Targets.Add(new CMakeTarget(projName));
+            //CMakeProject.Targets.Add(new CMakeTarget(projName));
         }
 
         public Project(string projName, string cMakeVersion) : this(projName)

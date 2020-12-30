@@ -6,12 +6,10 @@ namespace CMakeUtils
 {
     public static class CMakeProject
     {
-        public static List<CMakeTarget> Targets { private set; get; }
         public static List<CMakeScript> Scripts { private set; get; }
 
         public static void Init()
         {
-            Targets = new List<CMakeTarget>();
             Scripts = new List<CMakeScript>();
         }
 
@@ -21,12 +19,21 @@ namespace CMakeUtils
         /// <exception cref="TargetNotFoundException">Throws when target not found</exception>
         public static CMakeTarget FindTarget(string name)
         {
-            for (int i = 0; i < Targets.Count; i++)
+            for (int i = 0; i < Scripts.Count; i++)
             {
-                if (Targets[i].name == name)
-                    return Targets[i];
+                CMakeTarget t = Scripts[i].FindTarget(name);
+                if (t != null)
+                    return t;
             }
             throw new TargetNotFoundException(name);
+        }
+
+        public static void Compile()
+        {
+            for (int i = 0; i < Scripts.Count; i++)
+            {
+                Scripts[i].WriteFile();
+            }
         }
     }
 

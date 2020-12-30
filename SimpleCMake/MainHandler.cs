@@ -22,7 +22,7 @@ namespace SimpleCMake
             NewFile = ReactiveCommand.Create(_NewFile);
             OpenFile = ReactiveCommand.Create(_OpenFile);
             AddHdrs = ReactiveCommand.Create(_AddHdrs);
-            AddProj = ReactiveCommand.Create(_AddProj);
+            AddTarget = ReactiveCommand.Create(_AddTarget);
             AddSrcs = ReactiveCommand.Create(_AddSrcs);
 
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime)
@@ -36,7 +36,7 @@ namespace SimpleCMake
         public ReactiveCommand<Unit, Unit> Exit { get; }
         public ReactiveCommand<Unit, Unit> NewFile { get; }
         public ReactiveCommand<Unit, Unit> OpenFile { get; }
-        public ReactiveCommand<Unit, Unit> AddProj { get; }
+        public ReactiveCommand<Unit, Unit> AddTarget { get; }
         public ReactiveCommand<Unit, Task> AddSrcs { get; }
         public ReactiveCommand<Unit, Unit> AddHdrs { get; }
 
@@ -44,7 +44,7 @@ namespace SimpleCMake
 
         private void _Exit()
         {
-            Environment.Exit(0);
+            desktop.Shutdown();
         }
         private void _NewFile()
         {
@@ -61,7 +61,7 @@ namespace SimpleCMake
                 Console.Error.WriteLine("Main window is not found");
             }
         }
-        private async void _AddProj()
+        private async void _AddTarget()
         {
             if (desktop != null)
                 await new NewProjectDialog().ShowDialog(desktop.MainWindow);

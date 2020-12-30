@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCMake", "SimpleCMake.csproj", "{D6CE431D-3950-401A-942F-B3AC13469E61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCMake", "SimpleCMake.csproj", "{D6CE431D-3950-401A-942F-B3AC13469E61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMakeUtils", "..\CMakeUtils\CMakeUtils.csproj", "{45CE51A2-EF9B-4985-A275-83E62B1B8D06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMakeUtils", "..\CMakeUtils\CMakeUtils.csproj", "{45CE51A2-EF9B-4985-A275-83E62B1B8D06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCMake.WPF", "..\SimpleCMake.WPF\SimpleCMake.WPF.csproj", "{B882AA28-5B56-484C-BFDD-4CC4F5B79B33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{45CE51A2-EF9B-4985-A275-83E62B1B8D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45CE51A2-EF9B-4985-A275-83E62B1B8D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45CE51A2-EF9B-4985-A275-83E62B1B8D06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B882AA28-5B56-484C-BFDD-4CC4F5B79B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B882AA28-5B56-484C-BFDD-4CC4F5B79B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B882AA28-5B56-484C-BFDD-4CC4F5B79B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B882AA28-5B56-484C-BFDD-4CC4F5B79B33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
