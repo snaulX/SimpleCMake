@@ -23,6 +23,7 @@ namespace SimpleCMake.WPF
         public MainWindow()
         {
             InitializeComponent();
+            CMakeProject.Init();
         }
 
         private void Exit(object sender, RoutedEventArgs e)

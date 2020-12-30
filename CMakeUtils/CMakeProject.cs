@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace CMakeUtils
 {
@@ -26,6 +27,11 @@ namespace CMakeUtils
                     return t;
             }
             throw new TargetNotFoundException(name);
+        }
+
+        public static void GetFromFile(string filePath)
+        {
+            //pass
         }
 
         public static void Compile()

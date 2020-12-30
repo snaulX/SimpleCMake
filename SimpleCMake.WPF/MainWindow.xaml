@@ -9,8 +9,8 @@
     <Grid>
         <Menu VerticalAlignment="Top">
             <MenuItem Header="File">
-                <MenuItem x:Name="newFile"  Header="New"/>
-                <MenuItem x:Name="openFile" Header="Open"/>
+                <MenuItem Header="New"/>
+                <MenuItem Header="Open"/>
                 <Separator/>
                 <MenuItem Header="Exit" Click="Exit"/>
             </MenuItem>
@@ -26,6 +26,11 @@
                 <MenuItem Header="New Command" />
             </MenuItem>
             <MenuItem Header="Target">
+                <MenuItem Header="Add Sources Folder"/>
+                <MenuItem Header="Add Headers Folder"/>
+                <MenuItem Header="Add Source File"/>
+                <MenuItem Header="Add Header File"/>
+                <MenuItem Header="Link Library"/>
             </MenuItem>
         </Menu>
     </Grid>

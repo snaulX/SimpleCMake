@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Diagnostics;
 
 namespace CMakeUtils
 {
     public sealed class CMakeScript
     {
+        public string FileName
+        {
+            get => $"{folder}/CMakeLists.txt";
+        }
         public List<ICMakeFunction> functions;
         public string folder;
+        public bool Entrypoint { set; get; }
 
         private List<CMakeTarget> targets;
 
         public CMakeScript()
         {
+            Entrypoint = false;
             targets = new List<CMakeTarget>();
             folder = "";
             functions = new List<ICMakeFunction>();
@@ -27,9 +34,25 @@ namespace CMakeUtils
 
         public void WriteFile()
         {
-            using (StreamWriter sw = new StreamWriter(File.OpenWrite($"{folder}/CMakeLists.txt")))
+            using (StreamWriter sw = new StreamWriter(File.OpenWrite(FileName)))
             {
                 sw.Write(ToString());
+            }
+        }
+
+        public void ReadFile()
+        {
+            using (StreamReader sr = new StreamReader(File.OpenRead(FileName)))
+            {
+                string line = sr.ReadLine();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < line.Length; i++)
+                {
+                    if (line[i] != '(')
+                        sb.Append(line[i]);
+                    else
+                        break;
+                }
             }
         }
 
@@ -41,6 +64,11 @@ namespace CMakeUtils
                     return targets[i];
             }
             return null;
+        }
+
+        public void Build(string buildFolder)
+        {
+            Process buildProcess = Process.Start("cmake", "--build " + buildFolder);
         }
 
         public override string ToString()
